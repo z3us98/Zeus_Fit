@@ -35,6 +35,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    env: 
+      SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
