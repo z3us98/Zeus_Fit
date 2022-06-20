@@ -22,8 +22,8 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        env: 
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
+        env: # Or as an environment variable
+          credentials: ${{ secrets.AZURE_CREDENTIALS }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -35,8 +35,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    env: 
-      SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
+    env: # Or as an environment variable
+      credentials: ${{ secrets.AZURE_CREDENTIALS }}
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
