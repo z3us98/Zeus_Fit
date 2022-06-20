@@ -1,3 +1,25 @@
+spring:
+  datasource:
+    #url: jdbc:mysql://zeusfit.mysql.database.azure.com:3306/zeusfit?useSSL=true
+    #username: SofSec
+    #password: Progettissimo1
+    url: ${Url-DB}:3306/${name-DB}?useSSL=true
+    username: ${DB-username}
+    password: ${DB-password}
+  jpa:
+    show-sql: true
+    hibernate:
+
+      ddl-auto: update
+      dialect : org.hibernate.dialect.MySQL5InnoDBDialect
+  thymeleaf:
+    cache: false
+
+
+
+server:
+  port: 8080
+
 azure:
   keyvault:
     enabled: true
