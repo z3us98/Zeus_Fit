@@ -23,8 +23,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        env:
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
