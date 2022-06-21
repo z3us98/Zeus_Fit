@@ -8,6 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 
 jobs:
   build:
