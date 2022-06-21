@@ -36,8 +36,6 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    env:
-      SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
     
     steps:
       - name: Download artifact from build job
@@ -46,6 +44,8 @@ jobs:
           name: java-app
 
       - name: Deploy to Azure Web App
+        env:
+          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
