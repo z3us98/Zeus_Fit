@@ -1,4 +1,6 @@
 
+env:
+  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 spring:
   datasource:
     #url: jdbc:mysql://zeusfit.mysql.database.azure.com:3306/zeusfit?useSSL=true
@@ -26,5 +28,5 @@ azure:
     enabled: true
     uri: https://zeusfitkeyvault.vault.azure.net/
     client-id: 2d8fa8cb-5039-451e-affb-47cc67d13736
-    client-key: ${{ secrets.CLIENT_SECRET }}
+    client-key: ${SECRET_CLIENT}
     tenant-id: 2fcfe26a-bb62-46b0-b1e3-28f9da0c45fd
