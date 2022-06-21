@@ -231,6 +231,10 @@
     <div class="alert alert-danger">Il saldo da caricare deve essere positivo.</div>
 </div>
 
+<div th:if="${param.error2}">
+    <div class="alert alert-danger">Inserire soltanto valori numerici.</div>
+</div>
+
 <div class="testbox">
     <form th:action="@{/homepage/carica-saldo}" method="post" th:object="${ricaric}">
         <div class="banner" th:style="'background: url(/images/sfondo-caricasaldo.png); background-size: cover;'">
@@ -239,7 +243,7 @@
         <p class="top-info">Vuoi effettuare un pagamento per aumentare il tuo saldo? Inserisci la ricarica che vuoi effettuare!</p>
         <div class="item">
                 <label>Ricarica</label>
-                <input  id ="saldo" type="text" name="saldo" placeholder="ricarica" th:field="*{ricarica}" required/>
+                <input  id ="saldo" type="number" name="saldo" placeholder="ricarica" th:field="*{ricarica}" required/>
         </div>
         <div class="btn-block">
             <button type="submit" >Apply</button>
