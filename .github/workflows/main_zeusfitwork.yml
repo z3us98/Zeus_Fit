@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        env:
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
       - name: Set up Java version
       
         uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: '17'
 
       - name: Build with Maven
+        env:
+          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
