@@ -2,8 +2,6 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy JAR app to Azure Web App - zeusfitwork
-env:
-  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 on:
   push:
     branches:
@@ -23,6 +21,8 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
+        env:
+          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
