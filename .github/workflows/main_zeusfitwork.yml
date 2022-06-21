@@ -2,14 +2,13 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy JAR app to Azure Web App - zeusfitwork
-
+env:
+  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-env:
-  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
 
 jobs:
   build:
