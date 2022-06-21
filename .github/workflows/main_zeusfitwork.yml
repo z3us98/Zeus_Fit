@@ -22,8 +22,8 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        env:
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
+        #env:
+        #  SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
