@@ -22,6 +22,8 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
+        env:
+          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -39,8 +41,6 @@ jobs:
     
     steps:
       - name: Download artifact from build job
-        env:
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
         uses: actions/download-artifact@v2
         with:
           name: java-app
@@ -53,3 +53,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90773F5ACF12406B921B40AA2CB3FF61 }}
           package: '*.jar'
+          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
