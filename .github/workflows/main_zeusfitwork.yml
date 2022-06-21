@@ -49,4 +49,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90773F5ACF12406B921B40AA2CB3FF61 }}
           package: '*.jar'
-          SECRET_CLIENT: ${{ secrets.CLIENT_SECRET }}
