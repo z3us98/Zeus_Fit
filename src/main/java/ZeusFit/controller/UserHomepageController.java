@@ -156,11 +156,11 @@ public class UserHomepageController {
     public String viewprenotazioni(Model model) {
         //Cerco tutte le prenotazioni relative ad un determinato utente tramite l'id dell'utente
         final String user_id = getSecurityContext().getToken().getPreferredUsername();
+
         ConsumptionProbe consumptionProbe = rateLimiterService.bucket_exist(user_id);
 
         if (consumptionProbe.getRemainingTokens() >= 0) {
-
-
+            
             final String nome = getSecurityContext().getToken().getName();
             ArrayList<Prenotazione> prenotazionissime = prenotazioneRepository.findByIdUtente(user_id);
             ArrayList<ListaPrenotazioniDto> prenotazioni = new ArrayList<ListaPrenotazioniDto>();
@@ -399,6 +399,7 @@ public class UserHomepageController {
 
     @GetMapping("/effettua-prenotazione/{id}/{idcorso}")
     public String prenotati(@PathVariable (value = "id") long id,@PathVariable (value ="idcorso") long idcorso) {
+
         final String id_utente = getSecurityContext().getToken().getPreferredUsername();
 
         ConsumptionProbe consumptionProbe = rateLimiterService.bucket_exist(id_utente);
@@ -561,6 +562,13 @@ public class UserHomepageController {
             if(saldoDto.getRicarica() <=0){
                 return "redirect:/homepage/carica-saldo?error1";
             }
+
+            /*
+            if(Character.getNumericValue(Math.round(saldoDto.getRicarica())) <0){
+                return "redirect:/homepage/carica-saldo?error2";
+            }
+
+             */
             //
             user_key.setSaldo(saldo+saldoDto.getRicarica());
             user_keyRepository.save(user_key);
